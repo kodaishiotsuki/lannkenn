@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/sample.css">
+</head>
+<body>
+  <section id="roulette">
+      <div class="container">
+        <h1>一番当たらない星座占い</h1>
+        <div class="roulette">
+          <img id="roulette_img"></img>
+          <div class="half">
+            <div id="roulette_txt" style="display: none;"></div>
+            <button type="button" id="roulette_btn">START</button>
+          </div>
+        </div>
+        <div class="today">
+          <button type="button" id="today_btn">今日の運勢は</button>
+          <img id="today_img"></div>
+          <p id="today_result"></p>
+        </div>
+          <div id="today_btn2" style="display: none;">MORE</div>
+          <div class="today_detail" id="today_detail"></div>
+      </div>
+    </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    const mix_arry = [
+                ["img/乙女座.jpeg","おとめ座"],
+                ["img/双子座.jpeg","ふたご座"],
+                ["img/天秤座.jpeg","てんびん座"],
+                ["img/射手座.jpeg","いて座"],
+                ["img/山羊座.jpeg","やぎ座"],
+                ["img/水瓶座.jpeg","みずがめ座"],
+  ];
+    const img = document.getElementById("roulette_img");// 画像を表示
+    const txt = document.getElementById("roulette_txt");//テキストを表示
+    const btn = document.getElementById("roulette_btn");// ボタンを表示
+
+    $("#roulette_btn").on("click", function(){
+        if(btn.textContent==="START"){
+          btn.textContent = "STOP"//ボタンの表示を変える
+            timerId = setInterval( () => {
+           const rouletteIndex = Math.floor(Math.random() * 6) ;
+            const innerText = mix_arry[rouletteIndex];
+            const aaa = innerText[0];
+              img.src = aaa;
+          }, 200);//ランダム表示
+        }else if(btn.textContent === "STOP"){//ボタンの表示を変える)
+          clearInterval(timerId); //ランダム表示の停止
+          const txtIndex = Math.floor(Math.random() * 6) ;
+          const innerText = mix_arry[txtIndex];
+          const bbb = innerText[1];
+          const aaa = bbb;
+          txt.textContent = bbb;
+          $("#roulette_txt").show();
+        }else {
+          btn.textContent = "START"; //ボタンの表示を変える
+          clearInterval(timerId); //ランダム表示の停止
+        }
+    });
+  </script>
+</body>
+</html>
+
+

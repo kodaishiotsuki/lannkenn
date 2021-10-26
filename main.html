@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <!-- トップ -->
+    <!-- ルーレット -->
+    <section id="roulette">
+      <div class="container">
+        <h1>一番当たらない星座占い</h1>
+        <div class="roulette">
+          <img id="roulette_img"></img>
+          <div class="half">
+            <div id="roulette_txt" style="display: none;"></div>
+            <button type="button" id="roulette_btn">START</button>
+          </div>
+        </div>
+        <div class="today">
+          <button type="button" id="today_btn">今日の運勢は</button>
+          <img id="today_img"></div>
+          <p id="today_result"></p>
+        </div>
+          <div id="today_btn2" style="display: none;">MORE</div>
+          <div class="today_detail" id="today_detail"></div>
+      </div>
+    </section>
+
+    <!--おみくじ -->
+      <section id="omikuji">
+        <div class="omikuji">
+          <h1 class="omikuji_txt">本気(ガチ)おみくじ</h1>
+          <img id="move" class="move" src="./img/omikuji2 (1).jpg">
+          <p><button onclick="draw()" id="omikuji_btn">PUSH</button></p>
+          <img class="omikuji_img" src="">
+        </div>
+      </section>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+
+// 【星座占いセクション】
+      const img_arry = ["img/乙女座.jpeg",
+                "img/双子座.jpeg",
+                "img/天秤座.jpeg",
+                "img/射手座.jpeg",
+                "img/山羊座.jpeg",
+                "img/水瓶座.jpeg",
+                "img/牡牛座.jpg",
+                "img/牡羊座.jpeg",
+                "img/獅子座.jpeg",
+                "img/蟹座.jpeg",
+                "img/蠍座.jpeg",
+                "img/魚座.jpeg",
+                ];// 画像の配列
+      const txt_arry = ["おとめ座",
+                "ふたご座",
+                "てんびん座",
+                "いて座",
+                "やぎ座",
+                "みずがめ座",
+                "おうし座",
+                "おひつじ座",
+                "しし座",
+                "かに座",
+                "さそり座",
+                "うお座"];//テキストの配列
+    const img = document.getElementById("roulette_img");// 画像を表示
+    const txt = document.getElementById("roulette_txt");//テキストを表示
+    const btn = document.getElementById("roulette_btn");// ボタンを表示
+    img.src = img_arry[0];// 最初の画面
+// ボタン押す→画像ランダム
+      $("#roulette_btn").on("click", function(){
+        if(btn.textContent==="START"){
+          btn.textContent = "STOP"//ボタンの表示を変える
+            timerId = setInterval( () => {
+           const rouletteIndex = Math.floor(Math.random() * img_arry.length) ;
+            img.src = img_arry[rouletteIndex];
+          }, 200);//ランダム表示
+        }else if(btn.textContent === "STOP"){//ボタンの表示を変える)
+          clearInterval(timerId); //ランダム表示の停止
+          const txtIndex = Math.floor(Math.random() * txt_arry.length) ;
+            txt.textContent = txt_arry[txtIndex];
+          $("#roulette_txt").show("img.scr");
+        }else {
+          btn.textContent = "START"; //ボタンの表示を変える
+          clearInterval(timerId); //ランダム表示の停止
+        }
+    });
+
+// ボタン押す→順位がランダム表示
+    const today_arry = ["img/1.png","img/2.png","img/3.png","img/4.png","img/5.png","img/6.png","img/8.png","img/9.png"];// 画像の配列
+    const today_btn = document.getElementById("today_btn");// ボタンを表示
+    const today_img = document.getElementById("today_img");// 画像を表示
+    today_img.src = today_arry[0];// 最初の画面
+// ボタン押す→画像ランダム
+      $("#today_btn").on("click", function(){
+        if(today_btn.textContent==="今日の運勢は"){
+          today_btn.textContent = "STOP"//ボタンの表示を変える
+            timerId = setInterval( () => {
+           let todayIndex = Math.floor(Math.random() * today_arry.length) ;
+            today_img.src = today_arry[todayIndex];
+          });//ランダム表示
+        }else if(today_btn.textContent === "STOP"){
+          clearInterval(timerId); //ランダム表示の停止
+          $("#today_btn2").show(); //ボタン表示
+        }else{
+          today_btn.textContent = "今日の運勢は"; //ボタンの表示を変える
+          clearInterval(timerId); //ランダム表示の停止
+        }
+    });
+
+// ボタン押す→内容ランダム表示
+      $("#today_btn2").on("click",function(){
+      const un1 = [
+        "今日のアナタは絶好調！何をやってもうまくいきます。苦手なことに再チャレンジしたら案外うまくいくかも！",
+        "今日は調子が良い日。久しぶりに昔の友だちに連絡してもるのもいいかも！",
+        "今日はとてもいつもどおりな日。気を抜きすぎて寝坊をしやすくなるかも？",
+        "今日はなんだか気分が良くない日。忘れ物には気をつけて！",
+        "今日は何もせずゆっくりしているのが良いかも・・・",
+      ];
+      const un1random = Math.floor(Math.random()*un1.length);
+        document.getElementById("today_detail").innerHTML = un1[un1random];//ランダムにテキスト表示
+        // $("#today_btn3").show();//ボタン表示
+    });
+
+
+
+// 「くじを引く」ボタンを押すとランダムで結果発表（※５秒後に）
+$("#omikuji_btn").on("click", function(){
+  setTimeout(function draw() {
+      let randomNumber = Math.floor(Math.random()*6+1);
+      document.getElementsByClassName("omikuji_img")[0].setAttribute('src', 'img/kuji' + randomNumber + '.png');//ランダムに画像表示
+      document.querySelectorAll("#omikuji_btn")[0].innerHTML = "RETURN";//ボタンテキスト変更
+    },4000)
+});
+
+// 「くじを引く」ボタンを押すとおみくじ画像が回転
+    $("#omikuji_btn").on("click",function(){
+      $("#move").addClass("show");
+    });
+    </script>
+</body>
+</html>

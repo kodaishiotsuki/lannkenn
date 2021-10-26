@@ -1,0 +1,98 @@
+.main_imgBox {
+  height: 1500px;
+  width: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.main_logo a{
+  z-index: 11;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 6rem;
+  text-decoration: none;
+}
+
+.main_img {
+  z-index: 10;
+  opacity: 0;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-animation: anime 36s 0s infinite;
+  animation: anime 36s 0s infinite;
+}
+
+.main_img:nth-of-type(2) {
+  -webkit-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.main_img:nth-of-type(3) {
+  -webkit-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+.main_img:nth-of-type(4) {
+  -webkit-animation-delay: 18s;
+  animation-delay: 18s;
+}
+
+.main_img:nth-of-type(5) {
+  -webkit-animation-delay: 24s;
+  animation-delay: 24s;
+}
+
+.main_img:nth-of-type(6) {
+  -webkit-animation-delay: 30s;
+  animation-delay: 30s;
+}
+
+@keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  17% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+    transform: scale(1.2);
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  17% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
