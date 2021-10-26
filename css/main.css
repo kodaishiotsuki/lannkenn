@@ -52,6 +52,12 @@
   font-weight: bold;
 }
 
+.container h1 span {
+  text-shadow: 1px 0 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff,
+    3px 3px 0 #fff;
+  color: #2ba008;
+}
+
 .half {
   display: flex;
   justify-content: center;

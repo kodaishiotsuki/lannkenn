@@ -5,7 +5,7 @@
   position: relative;
 }
 
-.main_logo a{
+.main_logo a {
   z-index: 11;
   position: absolute;
   top: 40%;
@@ -16,6 +16,7 @@
   font-weight: bold;
   font-size: 6rem;
   text-decoration: none;
+  text-shadow: 2px 0 0 black, 0 2px 0 black, -2px 0 0 black, 0 -2px 0 black;
 }
 
 .main_img {
